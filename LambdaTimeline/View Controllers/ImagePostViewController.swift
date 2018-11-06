@@ -58,8 +58,13 @@ class ImagePostViewController: ShiftableViewController {
     @objc func vintageImageViewTapped() {
         print("vintageImageViewTapped")
         guard let originalImage = originalImage else { return }
-        let filteredImage = apply(filter: vintageFilter, for: originalImage)
-        imageView.image = filteredImage
+        
+        DispatchQueue.global().async {
+            let filteredImage = self.apply(filter: self.vintageFilter, for: originalImage)
+            DispatchQueue.main.async {
+                self.imageView.image = filteredImage
+            }
+        }
         
         noFilterImageView.layer.borderWidth = 0
         invertImageView.layer.borderWidth = 0
@@ -74,8 +79,13 @@ class ImagePostViewController: ShiftableViewController {
     @objc func monoImageViewTapped() {
         print("monoImageViewTapped")
         guard let originalImage = originalImage else { return }
-        let filteredImage = apply(filter: invertFilter, for: originalImage)
-        imageView.image = filteredImage
+        
+        DispatchQueue.global().async {
+            let filteredImage = self.apply(filter: self.invertFilter, for: originalImage)
+            DispatchQueue.main.async {
+                self.imageView.image = filteredImage
+            }
+        }
         
         vintageImageView.layer.borderWidth = 0
         noFilterImageView.layer.borderWidth = 0
@@ -90,8 +100,13 @@ class ImagePostViewController: ShiftableViewController {
     @objc func noirImageViewTapped() {
         print("noirImageViewTapped")
         guard let originalImage = originalImage else { return }
-        let filteredImage = apply(filter: monoFilter, for: originalImage)
-        imageView.image = filteredImage
+        
+        DispatchQueue.global().async {
+            let filteredImage = self.apply(filter: self.monoFilter, for: originalImage)
+            DispatchQueue.main.async {
+                self.imageView.image = filteredImage
+            }
+        }
         
         vintageImageView.layer.borderWidth = 0
         invertImageView.layer.borderWidth = 0
@@ -106,8 +121,13 @@ class ImagePostViewController: ShiftableViewController {
     @objc func coolImageViewTapped() {
         print("coolImageViewTapped")
         guard let originalImage = originalImage else { return }
-        let filteredImage = apply(filter: coolFilter, for: originalImage)
-        imageView.image = filteredImage
+        
+        DispatchQueue.global().async {
+            let filteredImage = self.apply(filter: self.coolFilter, for: originalImage)
+            DispatchQueue.main.async {
+                self.imageView.image = filteredImage
+            }
+        }
         
         vintageImageView.layer.borderWidth = 0
         invertImageView.layer.borderWidth = 0
@@ -122,8 +142,13 @@ class ImagePostViewController: ShiftableViewController {
     @objc func warmImageViewTapped() {
         print("warmImageViewTapped")
         guard let originalImage = originalImage else { return }
-        let filteredImage = apply(filter: warmFilter, for: originalImage)
-        imageView.image = filteredImage
+        
+        DispatchQueue.global().async {
+            let filteredImage = self.apply(filter: self.warmFilter, for: originalImage)
+            DispatchQueue.main.async {
+                self.imageView.image = filteredImage
+            }
+        }
         
         vintageImageView.layer.borderWidth = 0
         invertImageView.layer.borderWidth = 0
@@ -144,25 +169,45 @@ class ImagePostViewController: ShiftableViewController {
         imageView.image = originalImage
         noFilterImageView.image = UIImage.scaleImage(image: originalImage, size: size)
         
-        let filteredVintage: UIImage = apply(filter: vintageFilter, for: originalImage)
-        let scaledVintage = UIImage.scaleImage(image: filteredVintage, size: size)
-        vintageImageView.image = scaledVintage
+        DispatchQueue.global().async {
+            let filteredVintage: UIImage = self.apply(filter: self.vintageFilter, for: originalImage)
+            let scaledVintage = UIImage.scaleImage(image: filteredVintage, size: size)
+            DispatchQueue.main.async {
+                self.vintageImageView.image = scaledVintage
+            }
+        }
         
-        let filteredMono: UIImage = apply(filter: invertFilter, for: originalImage)
-        let scaledMono = UIImage.scaleImage(image: filteredMono, size: size)
-        invertImageView.image = scaledMono
+        DispatchQueue.global().async {
+            let filteredMono: UIImage = self.apply(filter: self.invertFilter, for: originalImage)
+            let scaledMono = UIImage.scaleImage(image: filteredMono, size: size)
+            DispatchQueue.main.async {
+                self.invertImageView.image = scaledMono
+            }
+        }
         
-        let filteredNoir: UIImage = apply(filter: monoFilter, for: originalImage)
-        let scaledNoir = UIImage.scaleImage(image: filteredNoir, size: size)
-        noirImageView.image = scaledNoir
+        DispatchQueue.global().async {
+            let filteredNoir: UIImage = self.apply(filter: self.monoFilter, for: originalImage)
+            let scaledNoir = UIImage.scaleImage(image: filteredNoir, size: size)
+            DispatchQueue.main.async {
+                self.noirImageView.image = scaledNoir
+            }
+        }
         
-        let filteredCool: UIImage = apply(filter: coolFilter, for: originalImage)
-        let scaledCool = UIImage.scaleImage(image: filteredCool, size: size)
-        coolImageView.image = scaledCool
+        DispatchQueue.global().async {
+            let filteredCool: UIImage = self.apply(filter: self.coolFilter, for: originalImage)
+            let scaledCool = UIImage.scaleImage(image: filteredCool, size: size)
+            DispatchQueue.main.async {
+                self.coolImageView.image = scaledCool
+            }
+        }
         
-        let filteredWarm: UIImage = apply(filter: warmFilter, for: originalImage)
-        let scaledWarm = UIImage.scaleImage(image: filteredWarm, size: size)
-        warmImageView.image = scaledWarm
+        DispatchQueue.global().async {
+            let filteredWarm: UIImage = self.apply(filter: self.warmFilter, for: originalImage)
+            let scaledWarm = UIImage.scaleImage(image: filteredWarm, size: size)
+            DispatchQueue.main.async {
+                self.warmImageView.image = scaledWarm
+            }
+        }
     }
     
     // 8. Hide labels
@@ -328,41 +373,21 @@ class ImagePostViewController: ShiftableViewController {
     // 11. Actions
     
     @IBAction func moreButtonTapped(_ sender: Any) {
-        
-        if moreFiltersSegmentedControl.selectedSegmentIndex == 0 {
-            hideUnhide()
-            if secondSlider.isHidden {
-                secondSlider.isHidden = false
-            } else {
-                secondSlider.isHidden = true
-            }
-            
-            if secondSliderLabel.isHidden {
-                secondSliderLabel.isHidden = false
-            } else {
-                secondSliderLabel.isHidden = true
-            }
-        } else if moreFiltersSegmentedControl.selectedSegmentIndex == 1 {
-            hideUnhide()
-            if secondSlider.isHidden {
-                secondSlider.isHidden = false
-            } else {
-                secondSlider.isHidden = true
-            }
-            
-            if secondSliderLabel.isHidden {
-                secondSliderLabel.isHidden = false
-            } else {
-                secondSliderLabel.isHidden = true
-            }
+        if moreFiltersSegmentedControl.selectedSegmentIndex == 0 && moreFiltersSegmentedControl.selectedSegmentIndex == 1 {
+            changeButtonName()
+            hideUnhideFirst()
+            hideUnhideSecond()
         } else if moreFiltersSegmentedControl.selectedSegmentIndex == 2 {
-            hideUnhide()
+            changeButtonName()
+            hideUnhideFirst()
+            hideUnhideSecond()
         } else {
-            hideUnhide()
+            changeButtonName()
+            hideUnhideFirst()
         }
     }
     
-    func hideUnhide() {
+    func hideUnhideFirst() {
         if moreFiltersSegmentedControl.isHidden {
             moreFiltersSegmentedControl.isHidden = false
         } else {
@@ -380,7 +405,9 @@ class ImagePostViewController: ShiftableViewController {
         } else {
             firstSlider.isHidden = true
         }
-        
+    }
+    
+    func hideUnhideSecond() {
         if secondSlider.isHidden {
             secondSlider.isHidden = false
         } else {
@@ -392,7 +419,9 @@ class ImagePostViewController: ShiftableViewController {
         } else {
             secondSliderLabel.isHidden = true
         }
-        
+    }
+    
+    func changeButtonName() {
         if moreButton.titleLabel?.text == "More" {
             moreButton.setTitle("Close", for: .normal)
         } else {
@@ -437,23 +466,35 @@ class ImagePostViewController: ShiftableViewController {
         let ciImage = CIImage(cgImage: cgImage)
         
         if moreFiltersSegmentedControl.selectedSegmentIndex == 0 {
-            hueFilter.setValue(ciImage, forKey: kCIInputImageKey)
-            hueFilter.setValue(firstSlider.value, forKey: kCIInputAngleKey)
-            guard let filteredCIImage = hueFilter.outputImage else { return }
-            guard let filteredCGImage = context.createCGImage(filteredCIImage, from: filteredCIImage.extent) else { return }
-            imageView.image = UIImage(cgImage: filteredCGImage)
+                self.hueFilter.setValue(ciImage, forKey: kCIInputImageKey)
+                self.hueFilter.setValue(self.firstSlider.value, forKey: kCIInputAngleKey)
+            DispatchQueue.global().async {
+                guard let filteredCIImage = self.hueFilter.outputImage else { return }
+                guard let filteredCGImage = self.context.createCGImage(filteredCIImage, from: filteredCIImage.extent) else { return }
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(cgImage: filteredCGImage)
+                }
+            }
         } else if moreFiltersSegmentedControl.selectedSegmentIndex == 1 {
-            posterizeFilter.setValue(ciImage, forKey: kCIInputImageKey)
-            posterizeFilter.setValue(firstSlider.value, forKey: "inputLevels") // Couldn't find right key
-            guard let filteredCIImage = posterizeFilter.outputImage else { return }
-            guard let filteredCGImage = context.createCGImage(filteredCIImage, from: filteredCIImage.extent) else { return }
-            imageView.image = UIImage(cgImage: filteredCGImage)
+                self.posterizeFilter.setValue(ciImage, forKey: kCIInputImageKey)
+                self.posterizeFilter.setValue(self.firstSlider.value, forKey: "inputLevels") // Couldn't find right key
+            DispatchQueue.global().async {
+                guard let filteredCIImage = self.posterizeFilter.outputImage else { return }
+                guard let filteredCGImage = self.context.createCGImage(filteredCIImage, from: filteredCIImage.extent) else { return }
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(cgImage: filteredCGImage)
+                }
+            }
         } else if moreFiltersSegmentedControl.selectedSegmentIndex == 2 {
-            holeDistortionFilter.setValue(ciImage, forKey: kCIInputImageKey)
-            holeDistortionFilter.setValue([firstSlider.value, firstSlider.value], forKey: "inputCenter") // Unclear
-            guard let filteredCIImage = holeDistortionFilter.outputImage else { return }
-            guard let filteredCGImage = context.createCGImage(filteredCIImage, from: filteredCIImage.extent) else { return }
-            imageView.image = UIImage(cgImage: filteredCGImage)
+                self.holeDistortionFilter.setValue(ciImage, forKey: kCIInputImageKey)
+                self.holeDistortionFilter.setValue([self.firstSlider.value, self.firstSlider.value], forKey: "inputCenter") // Key Unclear
+            DispatchQueue.global().async {
+                guard let filteredCIImage = self.holeDistortionFilter.outputImage else { return }
+                guard let filteredCGImage = self.context.createCGImage(filteredCIImage, from: filteredCIImage.extent) else { return }
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(cgImage: filteredCGImage)
+                }
+            }
         }
     }
     
@@ -464,11 +505,16 @@ class ImagePostViewController: ShiftableViewController {
         let ciImage = CIImage(cgImage: cgImage)
         
         if moreFiltersSegmentedControl.selectedSegmentIndex == 2 {
-            holeDistortionFilter.setValue(ciImage, forKey: kCIInputImageKey)
-            holeDistortionFilter.setValue(secondSlider.value, forKey: "inputRadius")
-            guard let filteredCIImage = holeDistortionFilter.outputImage else { return }
-            guard let filteredCGImage = context.createCGImage(filteredCIImage, from: filteredCIImage.extent) else { return }
-            imageView.image = UIImage(cgImage: filteredCGImage)
+            
+                self.holeDistortionFilter.setValue(ciImage, forKey: kCIInputImageKey)
+                self.holeDistortionFilter.setValue(self.secondSlider.value, forKey: "inputRadius")
+            DispatchQueue.global().async {
+                guard let filteredCIImage = self.holeDistortionFilter.outputImage else { return }
+                guard let filteredCGImage = self.context.createCGImage(filteredCIImage, from: filteredCIImage.extent) else { return }
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(cgImage: filteredCGImage)
+                }
+            }
         }
     }
     
