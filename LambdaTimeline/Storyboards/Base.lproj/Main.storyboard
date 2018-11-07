@@ -802,6 +802,7 @@
                         <outlet property="recordAudioView" destination="dPC-zA-RaO" id="tBb-G7-7IL"/>
                         <outlet property="recordButton" destination="hPy-IT-Ui5" id="dch-9V-d1K"/>
                         <outlet property="sendButton" destination="5O6-Oy-Hhn" id="hIH-ko-rmX"/>
+                        <outlet property="sendCommentView" destination="FvB-fi-dse" id="2I1-wM-PIy"/>
                         <outlet property="tableView" destination="HHs-oJ-84X" id="B7o-gV-YjY"/>
                         <outlet property="tableViewBottomConstraint" destination="95d-kf-pTi" id="VXk-4C-6UL"/>
                         <outlet property="titleLabel" destination="wOv-zy-vXZ" id="JEd-jV-4Pt"/>

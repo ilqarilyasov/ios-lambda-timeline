@@ -19,6 +19,7 @@ class MyImagePostDetailViewController: UIViewController, AVAudioPlayerDelegate, 
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100 // Default value
+        tableView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     
@@ -35,9 +36,12 @@ class MyImagePostDetailViewController: UIViewController, AVAudioPlayerDelegate, 
     }
     
     @IBAction func audioCommentTapped(_ sender: Any) {
+        
         if recordAudioView.isHidden {
+            tableViewBottomConstraint = NSLayoutConstraint(item: self.tableView, attribute: .bottom, relatedBy: .equal, toItem: recordAudioView, attribute: .top, multiplier: 1, constant: 8)
             recordAudioView.isHidden = false
         } else {
+            tableViewBottomConstraint = NSLayoutConstraint(item: self.tableView, attribute: .bottom, relatedBy: .equal, toItem: sendCommentView, attribute: .top, multiplier: 1, constant: 8)
             recordAudioView.isHidden = true
         }
     }
@@ -154,6 +158,7 @@ class MyImagePostDetailViewController: UIViewController, AVAudioPlayerDelegate, 
     var postController: PostController!
     var imageData: Data?
     
+    private var bottomConstraint: NSLayoutConstraint!
     private var recorder: AVAudioRecorder?
     private var player: AVAudioPlayer?
     private var recordingURL: URL?
@@ -170,8 +175,9 @@ class MyImagePostDetailViewController: UIViewController, AVAudioPlayerDelegate, 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var tableViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var recordAudioView: UIView!
+    @IBOutlet weak var sendCommentView: UIView!
     @IBOutlet weak var audioCommentButton: UIButton!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var recordButton: UIButton!
@@ -198,6 +204,10 @@ extension MyImagePostDetailViewController: UITableViewDelegate, UITableViewDataS
         cell.authorLabel.text = comment?.author.displayName
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     func playButtonTapped(on cell: MyImagePostDetailTableViewCell) {
