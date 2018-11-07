@@ -8,17 +8,18 @@
 
 import UIKit
 
+protocol MyImagePostDetailTableViewCellDelegate: class {
+    func playButtonTapped(on cell: MyImagePostDetailTableViewCell)
+}
+
 class MyImagePostDetailTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var playButton: UIButton!
+    weak var delegate: MyImagePostDetailTableViewCellDelegate?
+    
+    @IBAction func playButtonTapped(_ sender: Any) {
+        delegate?.playButtonTapped(on: self)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

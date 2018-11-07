@@ -32,6 +32,7 @@
 		82286C4E2192680B0027DD22 /* MyImagePostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82286C4D2192680B0027DD22 /* MyImagePostDetailViewController.swift */; };
 		823B36672190EA9D004D585E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 823B36662190EA9D004D585E /* GoogleService-Info.plist */; };
 		823B366921913A75004D585E /* UIImage+ScaleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823B366821913A75004D585E /* UIImage+ScaleImage.swift */; };
+		82A56E5F2192919500158BD0 /* MyImagePostDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A56E5E2192919500158BD0 /* MyImagePostDetailTableViewCell.swift */; };
 		E453457955DF907FCBD117F1 /* Pods_LambdaTimeline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA39CACB677861CF84322FB5 /* Pods_LambdaTimeline.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		82286C4D2192680B0027DD22 /* MyImagePostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagePostDetailViewController.swift; sourceTree = "<group>"; };
 		823B36662190EA9D004D585E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		823B366821913A75004D585E /* UIImage+ScaleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ScaleImage.swift"; sourceTree = "<group>"; };
+		82A56E5E2192919500158BD0 /* MyImagePostDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagePostDetailTableViewCell.swift; sourceTree = "<group>"; };
 		AA39CACB677861CF84322FB5 /* Pods_LambdaTimeline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LambdaTimeline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				46CFE7022171572600E7FF73 /* ImagePostCollectionViewCell.swift */,
+				82A56E5E2192919500158BD0 /* MyImagePostDetailTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				46CFE6FB21714E6100E7FF73 /* Author.swift in Sources */,
 				46CFE6F92170862C00E7FF73 /* ShiftableViewController.swift in Sources */,
 				4646377C216FDE4B00E7FF73 /* AppDelegate.swift in Sources */,
+				82A56E5F2192919500158BD0 /* MyImagePostDetailTableViewCell.swift in Sources */,
 				82286C4E2192680B0027DD22 /* MyImagePostDetailViewController.swift in Sources */,
 				46CFE6FD217154F500E7FF73 /* Networking.swift in Sources */,
 				46CFE6F521707D0000E7FF73 /* ImagePostViewController.swift in Sources */,

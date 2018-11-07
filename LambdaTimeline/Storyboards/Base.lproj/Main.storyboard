@@ -704,15 +704,29 @@
                                             <action selector="sendAudioTapped:" destination="gje-iu-uos" eventType="touchUpInside" id="nsG-wR-bSx"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOg-yS-sy4">
+                                        <rect key="frame" x="109.5" y="18" width="40" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="1K7-6Y-r8s"/>
+                                        </constraints>
+                                        <state key="normal" image="play-32"/>
+                                        <connections>
+                                            <action selector="playButtonTapped:" destination="gje-iu-uos" eventType="touchUpInside" id="Hti-pK-zPT"/>
+                                            <action selector="sendAudioTapped:" destination="gje-iu-uos" eventType="touchUpInside" id="gtv-0k-e9k"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.92156857250000002" green="0.92156863209999995" blue="0.92156857250000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="5O6-Oy-Hhn" secondAttribute="bottom" constant="10" id="A8n-eb-Gji"/>
                                     <constraint firstItem="hPy-IT-Ui5" firstAttribute="top" secondItem="dPC-zA-RaO" secondAttribute="top" id="DiA-qA-DLC"/>
                                     <constraint firstAttribute="bottom" secondItem="hPy-IT-Ui5" secondAttribute="bottom" id="EdB-Gf-Wzb"/>
+                                    <constraint firstItem="hPy-IT-Ui5" firstAttribute="leading" secondItem="mOg-yS-sy4" secondAttribute="trailing" constant="8" id="Iop-03-WLH"/>
                                     <constraint firstItem="5O6-Oy-Hhn" firstAttribute="top" secondItem="dPC-zA-RaO" secondAttribute="top" constant="10" id="O9x-gX-yIL"/>
                                     <constraint firstItem="hPy-IT-Ui5" firstAttribute="centerX" secondItem="dPC-zA-RaO" secondAttribute="centerX" id="SV2-Q1-uc1"/>
                                     <constraint firstItem="5O6-Oy-Hhn" firstAttribute="leading" secondItem="hPy-IT-Ui5" secondAttribute="trailing" constant="8" id="gMS-on-jcP"/>
+                                    <constraint firstItem="mOg-yS-sy4" firstAttribute="top" secondItem="dPC-zA-RaO" secondAttribute="topMargin" constant="10" id="gl5-9S-D2H"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="mOg-yS-sy4" secondAttribute="bottom" constant="10" id="kPn-es-bbX"/>
                                     <constraint firstAttribute="height" constant="60" id="xeo-Wp-reg"/>
                                 </constraints>
                             </view>
@@ -784,6 +798,7 @@
                         <outlet property="authorLabel" destination="824-kA-RxI" id="rF0-SU-CcY"/>
                         <outlet property="commentTextField" destination="pbX-yH-HZA" id="x3u-Tr-kSp"/>
                         <outlet property="imageView" destination="dE0-gE-J0x" id="4V7-wV-sDd"/>
+                        <outlet property="playButton" destination="mOg-yS-sy4" id="d5R-Jk-MaC"/>
                         <outlet property="recordAudioView" destination="dPC-zA-RaO" id="tBb-G7-7IL"/>
                         <outlet property="recordButton" destination="hPy-IT-Ui5" id="dch-9V-d1K"/>
                         <outlet property="sendButton" destination="5O6-Oy-Hhn" id="hIH-ko-rmX"/>

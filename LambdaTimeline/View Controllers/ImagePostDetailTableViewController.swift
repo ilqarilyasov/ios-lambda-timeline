@@ -77,8 +77,6 @@ class ImagePostDetailTableViewController: UITableViewController {
     var postController: PostController!
     var imageData: Data?
     
-    
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
