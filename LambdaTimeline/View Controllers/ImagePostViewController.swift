@@ -374,15 +374,15 @@ class ImagePostViewController: ShiftableViewController {
     
     @IBAction func moreButtonTapped(_ sender: Any) {
         if moreFiltersSegmentedControl.selectedSegmentIndex == 0 && moreFiltersSegmentedControl.selectedSegmentIndex == 1 {
-            changeButtonName()
+            changeMoreButtonName()
             hideUnhideFirst()
             hideUnhideSecond()
         } else if moreFiltersSegmentedControl.selectedSegmentIndex == 2 {
-            changeButtonName()
+            changeMoreButtonName()
             hideUnhideFirst()
             hideUnhideSecond()
         } else {
-            changeButtonName()
+            changeMoreButtonName()
             hideUnhideFirst()
         }
     }
@@ -421,7 +421,7 @@ class ImagePostViewController: ShiftableViewController {
         }
     }
     
-    func changeButtonName() {
+    func changeMoreButtonName() {
         if moreButton.titleLabel?.text == "More" {
             moreButton.setTitle("Close", for: .normal)
         } else {

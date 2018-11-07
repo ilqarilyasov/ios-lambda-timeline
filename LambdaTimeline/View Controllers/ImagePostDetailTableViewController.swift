@@ -16,7 +16,6 @@ class ImagePostDetailTableViewController: UITableViewController {
     }
     
     func updateViews() {
-        
         guard let imageData = imageData,
             let image = UIImage(data: imageData) else { return }
         
@@ -31,7 +30,6 @@ class ImagePostDetailTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     @IBAction func createComment(_ sender: Any) {
-        
         let alert = UIAlertController(title: "Add a comment", message: "Write your comment below:", preferredStyle: .alert)
         
         var commentTextField: UITextField?

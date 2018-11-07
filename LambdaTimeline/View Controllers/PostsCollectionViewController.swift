@@ -15,6 +15,8 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        navigationItem.leftBarButtonItem = editButtonItem
+        
         postController.observePosts { (_) in
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -84,7 +86,8 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
         
         if let cell = cell as? ImagePostCollectionViewCell,
             cell.imageView.image != nil {
-            self.performSegue(withIdentifier: "ViewImagePost", sender: nil)
+            // Why ??
+//            self.performSegue(withIdentifier: "ViewImagePost", sender: nil)
         }
     }
     
@@ -151,7 +154,7 @@ class PostsCollectionViewController: UICollectionViewController, UICollectionVie
             
         } else if segue.identifier == "ViewImagePost" {
             
-            let destinationVC = segue.destination as? ImagePostDetailTableViewController
+            let destinationVC = segue.destination as? MyImagePostDetailViewController
             
             guard let indexPath = collectionView.indexPathsForSelectedItems?.first,
                 let postID = postController.posts[indexPath.row].id else { return }
