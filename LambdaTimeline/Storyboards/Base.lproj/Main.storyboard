@@ -685,31 +685,28 @@
                                 <rect key="frame" x="0.0" y="557" width="375" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPy-IT-Ui5">
-                                        <rect key="frame" x="157.5" y="0.0" width="60" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="byq-ji-ZX2"/>
-                                        </constraints>
-                                        <state key="normal" image="record-64"/>
+                                        <rect key="frame" x="158.5" y="0.0" width="58" height="60"/>
+                                        <state key="normal" title="Record">
+                                            <color key="titleColor" red="0.23780792949999999" green="0.49948436019999998" blue="0.96475297209999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
                                         <connections>
                                             <action selector="recordTapped:" destination="gje-iu-uos" eventType="touchUpInside" id="u1i-Yg-2ic"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5O6-Oy-Hhn">
-                                        <rect key="frame" x="225.5" y="10" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="ZgO-Wi-vLf"/>
-                                        </constraints>
-                                        <state key="normal" image="send"/>
+                                        <rect key="frame" x="224.5" y="10" width="42" height="40"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
                                         <connections>
                                             <action selector="sendAudioTapped:" destination="gje-iu-uos" eventType="touchUpInside" id="nsG-wR-bSx"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOg-yS-sy4">
-                                        <rect key="frame" x="109.5" y="18" width="40" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="1K7-6Y-r8s"/>
-                                        </constraints>
-                                        <state key="normal" image="play-32"/>
+                                        <rect key="frame" x="116.5" y="18" width="34" height="24"/>
+                                        <state key="normal" title="Play">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
                                         <connections>
                                             <action selector="playButtonTapped:" destination="gje-iu-uos" eventType="touchUpInside" id="Hti-pK-zPT"/>
                                             <action selector="sendAudioTapped:" destination="gje-iu-uos" eventType="touchUpInside" id="gtv-0k-e9k"/>
@@ -739,9 +736,6 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="commentTextFieldAction:" destination="gje-iu-uos" eventType="editingDidEnd" id="Vlb-gb-IHQ"/>
-                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jdo-1w-jqC">
                                         <rect key="frame" x="279" y="5" width="40" height="40"/>
@@ -816,7 +810,6 @@
     <resources>
         <image name="microphone" width="25.600000381469727" height="25.600000381469727"/>
         <image name="play-32" width="25.600000381469727" height="25.600000381469727"/>
-        <image name="record-64" width="51.200000762939453" height="51.200000762939453"/>
         <image name="send" width="25.600000381469727" height="25.600000381469727"/>
     </resources>
 </document>

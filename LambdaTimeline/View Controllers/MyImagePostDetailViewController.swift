@@ -46,13 +46,10 @@ class MyImagePostDetailViewController: UIViewController, AVAudioPlayerDelegate, 
         }
     }
     
-    @IBAction func commentTextFieldAction(_ sender: Any) {
-        let image: UIImage = commentTextField.text != nil ? #imageLiteral(resourceName: "send") : #imageLiteral(resourceName: "microphone")
-        audioCommentButton.setImage(image, for: .normal)
-    }
-    
-    
     @IBAction func recordTapped(_ sender: Any) {
+        
+        defer { updateButton() }
+        
         requestRecordPermission()
         
         guard !isRecording else {
@@ -71,6 +68,8 @@ class MyImagePostDetailViewController: UIViewController, AVAudioPlayerDelegate, 
     }
     
     @IBAction func playButtonTapped(_ sender: Any) {
+        defer { updateButton() }
+        
         guard let audioURL = recordingURL else { return }
         
         guard !isPlaying else {
@@ -105,6 +104,7 @@ class MyImagePostDetailViewController: UIViewController, AVAudioPlayerDelegate, 
     }
     
     @IBAction func sendAudioTapped(_ sender: Any) {
+        
         
     }
     
@@ -142,11 +142,16 @@ class MyImagePostDetailViewController: UIViewController, AVAudioPlayerDelegate, 
     }
     
     private func updateButton() {
-        let recordingImage: UIImage = (isPlaying ? UIImage(named: "record-64") : UIImage(named: "stop-64"))!
-        recordButton.setImage(recordingImage, for: .normal)
+//        let recordingImage: UIImage = (isRecording ? UIImage(named: "record-64") : UIImage(named: "stop-64"))!
+//        recordButton.setImage(recordingImage, for: .normal)
         
-        let playingImage: UIImage = (isPlaying ? UIImage(named: "play") : UIImage(named: "stop"))!
-        playButton.setImage(playingImage, for: .normal)
+//        let playingImage: UIImage = (isPlaying ? UIImage(named: "play") : UIImage(named: "stop"))!
+//        playButton.setImage(playingImage, for: .normal)
+        
+        let recording = isRecording ? "Stop" : "Record"
+        recordButton.setTitle(recording, for: .normal)
+        let playing = isPlaying ? "Stop" : "Play"
+        playButton.setTitle(playing, for: .normal)
     }
     
     private func newRecordingURL() -> URL {
@@ -184,6 +189,8 @@ class MyImagePostDetailViewController: UIViewController, AVAudioPlayerDelegate, 
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
 }
+
+// DataSource
 
 extension MyImagePostDetailViewController: UITableViewDelegate, UITableViewDataSource, MyImagePostDetailTableViewCellDelegate {
     
